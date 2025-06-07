@@ -82,6 +82,26 @@
 	</dependencyManagement>
 
 	<build>
+		<resources>
+			<!-- Copiar application.properties SIN filtrado -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>application.properties</include>
+				</includes>
+			</resource>
+
+			<!-- Copiar otros recursos CON filtrado -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>application.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -109,5 +129,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

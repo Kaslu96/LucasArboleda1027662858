@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,6 +36,16 @@ public class InmuebleServiceImpl implements InmuebleService {
     @Override
     public List<InmuebleDTO> findAllInmuebles() {
         return inmuebleRepository.findAll().stream().map(this::convertirADTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public InmuebleDTO findInmuebles(Long id){
+        Optional<Inmueble> inmuebleEcnontrado = inmuebleRepository.findById(id);
+        if (inmuebleEcnontrado.isPresent()) {
+            return convertirADTO(inmuebleEcnontrado.get());
+        } else {
+            return null;
+        }
     }
 
     private InmuebleDTO convertirADTO(Inmueble entidad) {

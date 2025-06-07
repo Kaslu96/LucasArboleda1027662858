@@ -30,4 +30,9 @@ public class InmuebleController {
     public ResponseEntity<?> getAllInmuebles() {
         return ResponseEntity.ok(inmuebleService.findAllInmuebles());
     }
+
+    @GetMapping("{inmuebleId}")
+    public ResponseEntity<?> getInmuble(@PathVariable Long inmuebleId) {
+        return ResponseEntity.ok(inmuebleService.findInmuebles(inmuebleId));
+    }
 }

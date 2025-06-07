@@ -12,4 +12,6 @@ public interface InmuebleService {
     void deleteInmueble(Long inmuebleId);
 
     List<InmuebleDTO> findAllInmuebles();
+
+    InmuebleDTO findInmuebles(Long id);
 }
